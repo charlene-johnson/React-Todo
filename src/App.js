@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-
+import './components/Todo.css'
 
 
 const tasks = [
@@ -14,6 +14,11 @@ const tasks = [
     task: 'Organize Garage',
     id: 1528817077286,
     completed: false 
+  },
+  {
+    task: 'Practice Coding',
+    id: 12345,
+    completed: false
   }
 ];
 
@@ -25,7 +30,7 @@ class App extends React.Component {
     super();
     this.state= {
       tasks
-    }
+    };
   }
   toggleTask = todoId => {
     console.log(todoId);
@@ -40,8 +45,8 @@ class App extends React.Component {
         }
         return todo;
       })
-    })
-  }
+    });
+  };
 
   addTask = (e, task) => {
     e.preventDefault();
@@ -52,8 +57,8 @@ class App extends React.Component {
     };
     this.setState({
       tasks: [...this.state.tasks, newTask]
-    })
-  }
+    });
+  };
 
   clearCompleted = e => {
     e.preventDefault();
@@ -66,11 +71,12 @@ class App extends React.Component {
     return (
       <div>
         <h2>To Do List</h2>
-        <TodoForm addTask={this.addTask} />
+        <TodoForm 
+          addTask={this.addTask} 
+          clearCompleted={this.clearCompleted} />
         <TodoList
-        toggleTask={this.toggleTask}
-        clearCompleted={this.clearCompleted}
-        tasks={this.state.tasks}
+          toggleTask={this.toggleTask}
+          tasks={this.state.tasks}
         />
       </div>
     );
