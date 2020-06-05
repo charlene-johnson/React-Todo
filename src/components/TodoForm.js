@@ -26,6 +26,7 @@ class TodoForm extends React.Component {
                     type="text"
                     value={this.state.task}
                     name="task"
+                    placeholder="Add Task"
                     onChange={this.handleChanges}/>
                 <button>Add Todo</button>
                 <button className="clear-completed" onClick={this.props.clearCompleted}>Clear Completed</button>
